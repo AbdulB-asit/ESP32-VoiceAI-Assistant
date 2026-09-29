@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "author": "Burhan",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {
+        "flashSize": "8",
+        "psramSize": "8"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -105,
+      "left": 250,
+      "attrs": {
+        "color": "black",
+        "label": "TALK"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": 20,
+      "left": 300,
+      "attrs": {
+        "color": "green",
+        "label": "READY"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rGreen",
+      "top": 70,
+      "left": 240,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRed",
+      "top": 130,
+      "left": 300,
+      "attrs": {
+        "color": "red",
+        "label": "RECORDING"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rRed",
+      "top": 180,
+      "left": 240,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledBlue",
+      "top": 240,
+      "left": 300,
+      "attrs": {
+        "color": "blue",
+        "label": "PROCESSING"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rBlue",
+      "top": 290,
+      "left": 240,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "esp:8", "btn1:1.l", "green", [] ],
+    [ "btn1:2.l", "esp:GND.1", "black", [] ],
+
+    [ "esp:9", "rGreen:1", "green", [] ],
+    [ "rGreen:2", "ledGreen:A", "green", [] ],
+    [ "ledGreen:C", "esp:GND.2", "black", [] ],
+
+    [ "esp:10", "rRed:1", "red", [] ],
+    [ "rRed:2", "ledRed:A", "red", [] ],
+    [ "ledRed:C", "esp:GND.3", "black", [] ],
+
+    [ "esp:11", "rBlue:1", "blue", [] ],
+    [ "rBlue:2", "ledBlue:A", "blue", [] ],
+    [ "ledBlue:C", "esp:GND.4", "black", [] ]
+  ]
+}
